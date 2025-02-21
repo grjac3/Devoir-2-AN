@@ -3,14 +3,48 @@ import matplotlib.pyplot as plt
 from pointfixe import pointfixe
 
 
-def fonc1(x):
-    y = (x+1)*(x-1)**2
-    return y
-r1 = -1
-r2 = 1
+def f(x):
+    return (x+1)*(x-1)**2
+
 
 #Question 1 point fixe
-def fonc_g1(fonc, x):
-    x - fonc1/5
+def g(x):
+    return x - f(x)/5
 
-pointfixe()
+x0_r1 = -1.5
+x0_r2 = 1.5
+tol = 1e-6
+Nmax = 100
+
+x_vals_r1 = pointfixe(g, x0_r1, Nmax, tol)
+x_vals_r2 = pointfixe(g, x0_r2, Nmax, tol)
+
+r1 = x_vals_r1[-1]  # Valeur finale comme approximation de r1
+r2 = x_vals_r2[-1]  # Valeur finale comme approximation de r2
+
+# Erreurs
+E_r1 = np.abs(np.array(x_vals_r1) - r1)
+E_r2 = np.abs(np.array(x_vals_r2) - r2)
+
+# Figure 1 : Erreur en semi-log
+plt.figure(1)
+plt.semilogy(E_r1, label='Erreur pour r1')
+plt.semilogy(E_r2, label='Erreur pour r2')
+plt.xlabel("Itération n")
+plt.ylabel("Erreur |x_n - r|")
+plt.title("Évolution de l'erreur en semi-log")
+plt.legend()
+plt.grid()
+
+# Figure 2 : Rapport des erreurs successives
+plt.figure(2)
+plt.plot(E_r1[1:] / E_r1[:-1], label='E_{n+1} / E_n pour r1')
+plt.plot(E_r2[1:] / E_r2[:-1], label='E_{n+1} / E_n pour r2')
+plt.xlabel("Itération n")
+plt.ylabel("E_{n+1} / E_n")
+plt.title("Rapport des erreurs successives")
+plt.legend()
+plt.grid()
+
+# Affichage des figures
+plt.show()
