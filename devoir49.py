@@ -33,6 +33,11 @@ plt.semilogy(E_r2, label='Erreur pour r2')
 plt.xlabel("Itération n")
 plt.ylabel("Erreur |x_n - r|")
 plt.title("Évolution de l'erreur en semi-log")
+plt.legend()
+print(E_r1[1:])
+print(E_r1[:-1])
+print(E_r1[1:] / E_r1[:-1])
+err = []
 
 # Figure 2 : Rapport des erreurs successives
 plt.figure(2)
@@ -41,6 +46,7 @@ plt.plot(E_r2[1:] / E_r2[:-1], label='E_n+1 / E_n pour r2')
 plt.xlabel("Itération n")
 plt.ylabel("E_n+1 / E_n")
 plt.title("Rapport des erreurs successives")
+plt.legend()
 
 plt.show()
 
