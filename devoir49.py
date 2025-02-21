@@ -14,17 +14,17 @@ def g(x):
 x0_r1 = -1.5
 x0_r2 = 1.5
 tol = 1e-6
-Nmax = 100
+N = 100
 
-x_vals_r1 = pointfixe(g, x0_r1, Nmax, tol)
-x_vals_r2 = pointfixe(g, x0_r2, Nmax, tol)
+valeurs_r1 = pointfixe(g, x0_r1, N, tol)
+valeurs_r2 = pointfixe(g, x0_r2, N, tol)
 
-r1 = x_vals_r1[-1]  # Valeur finale comme approximation de r1
-r2 = x_vals_r2[-1]  # Valeur finale comme approximation de r2
+r1 = valeurs_r1[-1]  # Valeur finale comme approximation de r1
+r2 = valeurs_r2[-1]  # Valeur finale comme approximation de r2
 
 # Erreurs
-E_r1 = np.abs(np.array(x_vals_r1) - r1)
-E_r2 = np.abs(np.array(x_vals_r2) - r2)
+E_r1 = np.abs(np.array(valeurs_r1) - r1)
+E_r2 = np.abs(np.array(valeurs_r2) - r2)
 
 # Figure 1 : Erreur en semi-log
 plt.figure(1)
@@ -48,3 +48,9 @@ plt.grid()
 
 # Affichage des figures
 plt.show()
+
+
+#Question 2 Méthode de Newton
+
+#Question 3 Méthode de Steffenson
+
