@@ -13,8 +13,8 @@ def g(x):
 
 x0_r1 = -1.5
 x0_r2 = 1.5
-tol = 1e-6
-N = 100
+tol = 10**-7
+N = 50
 
 valeurs_r1 = pointfixe(g, x0_r1, N, tol)
 valeurs_r2 = pointfixe(g, x0_r2, N, tol)
@@ -34,10 +34,7 @@ plt.xlabel("Itération n")
 plt.ylabel("Erreur |x_n - r|")
 plt.title("Évolution de l'erreur en semi-log")
 plt.legend()
-print(E_r1[1:])
-print(E_r1[:-1])
-print(E_r1[1:] / E_r1[:-1])
-err = []
+
 
 # Figure 2 : Rapport des erreurs successives
 plt.figure(2)
